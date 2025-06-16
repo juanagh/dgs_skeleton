@@ -30,8 +30,10 @@ jobs:
         id: setup-cli
         uses: jfrog/setup-jfrog-cli@v4
         env:
-          JF_URL: https://${{ vars.JF_HOST }}/
-          JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
+          #JF_URL: https://${{ vars.JF_HOST }}/
+          JF_URL:  ${{ secrets.JF_URL }}
+          #JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
+          JF_PROJECT: 'jagh'
         with:
             oidc-provider-name: davidro-github-integration
             oidc-audience: davidro-github
@@ -44,7 +46,8 @@ jobs:
       - name: Run Maven build 
         env:
           PKG_VERSION: 1.${{ env.JFROG_CLI_BUILD_NUMBER }}.0
-          JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
+          #JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
+          JF_PROJECT: 'jagh'
         run: |
             # Collect environment variables for the build
             jf rt bce ${{ env.JFROG_CLI_BUILD_NAME }} ${{ env.JFROG_CLI_BUILD_NUMBER }} 
@@ -67,7 +70,8 @@ jobs:
       - name: Build and push docker tomcat + war based docker images
         env: 
           PKG_VERSION: 1.${{ env.JFROG_CLI_BUILD_NUMBER }}.0
-          JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
+          #JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
+          JF_PROJECT: 'jagh'
         uses: docker/build-push-action@v6
         id: docker_build
         with:
@@ -81,7 +85,8 @@ jobs:
       - name: Push Docker build info
         env:
           PKG_VERSION: 1.${{ env.JFROG_CLI_BUILD_NUMBER }}.0
-          JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
+          #JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
+          JF_PROJECT: 'jagh'
         run: |
           echo ${{ vars.JF_HOST }}/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME}}:${{ env.PKG_VERSION }}@${{ steps.docker_build.outputs.digest }} > ./image-metadata.json
           # Collect environment variables for the build
@@ -96,7 +101,8 @@ jobs:
       - name: Scan the build & the docker image
         env:
           PKG_VERSION: 1.${{ env.JFROG_CLI_BUILD_NUMBER }}.0
-          JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
+          #JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
+          JF_PROJECT: 'jagh'
         run: |
           # Xray build scan example
           docker pull ${{ vars.JF_HOST }}/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME}}:${{ env.PKG_VERSION }}
