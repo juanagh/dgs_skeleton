@@ -42,3 +42,4 @@ jobs:
           # [Optional, default: "TRUE"]
           # Fails the Frogbot task if any security issue is found.
           JF_FAIL: "FALSE"
+          JFROG_CLI_LOG_LEVEL: "DEBUG"

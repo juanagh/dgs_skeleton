@@ -7,9 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DOCKER_REPO: 'dro-oci-dev-local'
+      DOCKER_REPO: 'jagh-oci-dev-local'
       IMAGE_NAME: 'graphql-dgs-tcat'
-      MVN_VIRTUAL_REPO: 'dro-backend-maven-virtual'
+      MVN_VIRTUAL_REPO: 'jagh-maven'
     permissions:
       id-token: write
       contents: read
@@ -102,5 +102,3 @@ jobs:
           docker pull ${{ vars.JF_HOST }}/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME}}:${{ env.PKG_VERSION }}
           jf docker scan ${{ vars.JF_HOST }}/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME}}:${{ env.PKG_VERSION }} --severity='HIGH,CRITICAL' --vuln
           jf bs --fail=false --vuln ${{ env.JFROG_CLI_BUILD_NAME }} ${{ env.JFROG_CLI_BUILD_NUMBER }}
-
-
