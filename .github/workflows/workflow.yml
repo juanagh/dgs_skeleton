@@ -35,8 +35,8 @@ jobs:
           #JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
           JF_PROJECT: 'jagh'
         with:
-            oidc-provider-name: davidro-github-integration
-            oidc-audience: davidro-github
+            oidc-provider-name: jagh-github
+            oidc-audience: jagh-github
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
