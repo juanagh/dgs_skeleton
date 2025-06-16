@@ -45,7 +45,9 @@ jobs:
           # [Optional, default: https://api.github.com]
           # API endpoint to GitHub
           # JF_GIT_API_ENDPOINT: https://github.example.com
-          JFROG_CLI_LOG_LEVEL: "DEBUG"
+          
+          # For debug purposes
+          # JFROG_CLI_LOG_LEVEL: "DEBUG"
 
           # [Optional]
           # By default, the Frogbot workflows download the Frogbot executable as well as other tools
