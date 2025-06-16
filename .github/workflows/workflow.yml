@@ -73,6 +73,7 @@ jobs:
           PKG_VERSION: 1.${{ env.JFROG_CLI_BUILD_NUMBER }}.0
           #JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
           JF_PROJECT: 'jagh'
+          JFROG_CLI_LOG_LEVEL: "DEBUG"
         uses: docker/build-push-action@v6
         id: docker_build
         with:
