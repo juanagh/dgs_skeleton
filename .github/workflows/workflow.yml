@@ -33,7 +33,7 @@ jobs:
           #JF_URL: https://${{ vars.JF_HOST }}/
           JF_URL:  ${{ secrets.JF_URL }}
           #JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
-          JF_PROJECT: 'jagh'
+          JF_PROJECT: 'juanagh'
         with:
             oidc-provider-name: jagh-github
             oidc-audience: jagh-github
@@ -47,7 +47,7 @@ jobs:
         env:
           PKG_VERSION: 1.${{ env.JFROG_CLI_BUILD_NUMBER }}.0
           #JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
-          JF_PROJECT: 'jagh'
+          JF_PROJECT: 'juanagh'
         run: |
             # Collect environment variables for the build
             jf rt bce ${{ env.JFROG_CLI_BUILD_NAME }} ${{ env.JFROG_CLI_BUILD_NUMBER }} 
@@ -72,7 +72,7 @@ jobs:
         env: 
           PKG_VERSION: 1.${{ env.JFROG_CLI_BUILD_NUMBER }}.0
           #JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
-          JF_PROJECT: 'jagh'
+          JF_PROJECT: 'juanagh'
           JFROG_CLI_LOG_LEVEL: "DEBUG"
         uses: docker/build-push-action@v6
         id: docker_build
@@ -89,7 +89,7 @@ jobs:
         env:
           PKG_VERSION: 1.${{ env.JFROG_CLI_BUILD_NUMBER }}.0
           #JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
-          JF_PROJECT: 'jagh'
+          JF_PROJECT: 'juanagh'
         run: |
           #echo ${{ vars.JF_HOST }}/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME}}:${{ env.PKG_VERSION }}@${{ steps.docker_build.outputs.digest }} > ./image-metadata.json
           echo ${{ secrets.JF_URL }}/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME}}:${{ env.PKG_VERSION }}@${{ steps.docker_build.outputs.digest }} > ./image-metadata.json
@@ -106,7 +106,7 @@ jobs:
         env:
           PKG_VERSION: 1.${{ env.JFROG_CLI_BUILD_NUMBER }}.0
           #JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
-          JF_PROJECT: 'jagh'
+          JF_PROJECT: 'juanagh'
         run: |
           # Xray build scan example
           #docker pull ${{ vars.JF_HOST }}/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME}}:${{ env.PKG_VERSION }}
