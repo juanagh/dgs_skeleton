@@ -35,7 +35,7 @@ jobs:
           JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
           JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JF_GIT_BASE_BRANCH: ${{ matrix.branch }}    # For repository scan action
-          JF_DEPS_REPO: "juanagh-maven"
+          JF_DEPS_REPO: "jagh-maven"
           # these parameters are better suited for demos, in real life, bith are often set to false
           JF_INCLUDE_ALL_VULNERABILITIES: "TRUE"
           JF_GIT_AGGREGATE_FIXES: "TRUE"
