@@ -43,3 +43,4 @@ jobs:
           # Fails the Frogbot task if any security issue is found.
           JF_FAIL: "FALSE"
           JFROG_CLI_LOG_LEVEL: "DEBUG"
+          JF_INSTALL_DEPS_CMD: "mvn clean install -DskipTests"
